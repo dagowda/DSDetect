@@ -13,7 +13,7 @@ def detect(hash):
 
    header={
        "accept": "application/json",
-       "x-apikey":"39c14f9bda10b66eccbd135511f0215072778e7d540f3908d9fca49e65130d68"
+       "x-apikey":"" #Use your own API from VirusTotal
        }
 
    response=requests.get(url,headers=header,params=query_p)
