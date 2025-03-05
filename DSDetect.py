@@ -13,53 +13,7 @@ def detect(hash):
 
    header={
        "accept": "application/json",
-       "x-apikey":"" #Use your own API from VirusTotal
-       }
-
-   response=requests.get(url,headers=header,params=query_p)
-   a=response.text
-
-   final=json.loads(a)
-   print("[*]The Total number of detections are %s" % final["data"]["detection_ratio"]["detections"])
-   
-   token_url=final["data"]["url"]
-   print(token_url)
-   headers = {
-    "Host": "www.virustotal.com",
-    "Sec-Ch-Ua": "\"Not:A-Brand\";v=\"99\", \"Chromium\";v=\"112\"",
-    "Sec-Ch-Ua-Mobile": "?0",
-    "Sec-Ch-Ua-Platform": "\"Windows\"",
-    "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.138 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-    "Sec-Fetch-Site": "none",
-    "Sec-Fetch-Mode": "navigate",
-    "Sec-Fetch-User": "?1",
-    "Sec-Fetch-Dest": "document",
-    "Accept-Encoding": "gzip, deflate",
-    "Accept-Language": "en-US,en;q=0.9"
-   }
-
-   response = requests.get(token_url, headers=headers)
-   print(response.content)
-   
-   a=response.content.decode('utf-8')
-   
-   import requests
-import sys,json,re
-
-def detect(hash):
-   hash=sys.argv[1]
-   url=f"https://www.virustotal.com/api/v3/widget/url"
-
-   #print(url)
-
-   query_p = {
-       "query": hash
-   }
-
-   header={
-       "accept": "application/json"
+       "x-apikey":""#Use your own VirusTotal API key
        }
 
    response=requests.get(url,headers=header,params=query_p)
