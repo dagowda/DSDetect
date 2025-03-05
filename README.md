@@ -1,4 +1,4 @@
-#❗ DSDetect
+# ❗DSDetect
 A tool for automatically detecting malicious files using hashes.
 
 <p align="center">
