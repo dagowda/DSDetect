@@ -114,7 +114,7 @@ def detect(hash):
       
 
 if __name__== "__main__":
-   banner="""
+   banner=r"""
    
                                                                                              
                                                                                           
