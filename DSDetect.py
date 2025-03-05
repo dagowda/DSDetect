@@ -13,7 +13,7 @@ def detect(hash):
 
    header={
        "accept": "application/json",
-       "x-apikey":"" #use your own api key from VirusTotal
+       "x-apikey":"39c14f9bda10b66eccbd135511f0215072778e7d540f3908d9fca49e65130d68"
        }
 
    response=requests.get(url,headers=header,params=query_p)
@@ -92,10 +92,11 @@ def detect(hash):
    a=response.content.decode('utf-8')
    
    patterns = {
+    "Possible malware name": r'<span class="vt-utils-ellipsis vt-utils-engine-verdict vt-utils-bold">Elastic:\s*<a[^>]*data-pivot-val=\'elastic:"([^"]+)"\'',
     "MD5": r'MD5</div>\s*<div class="vt-table__col vt-table__col--breakable">\s*<a[^>]*data-pivot-val="([^"]+)"',
     "SHA-1": r'SHA-1</div>\s*<div class="vt-table__col vt-table__col--breakable">\s*<a[^>]*data-pivot-val="([^"]+)"',
     "SHA-256": r'SHA-256</div>\s*<div class="vt-table__col vt-table__col--breakable">\s*<a[^>]*data-pivot-val="([^"]+)"',
-    "First submission to VT": r'First submission to VT</div>\s*<div class="vt-table__col">\s*([^<]+)\s*</div>'
+    "First submission to VT": r'First submission to VT</div>\s*<div class="vt-table__col">\s*([^<]+)\s*</div>',
 }
 
 
