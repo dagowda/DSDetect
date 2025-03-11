@@ -1,8 +1,9 @@
 import requests
 import sys,json,re
+import time
 
 def detect(hash):
-   hash=sys.argv[1]
+   print(f"Hash: {hash}")
    url=f"https://www.virustotal.com/api/v3/widget/url"
 
    #print(url)
@@ -13,14 +14,18 @@ def detect(hash):
 
    header={
        "accept": "application/json",
-       "x-apikey":""#Use your own VirusTotal API key
+       "x-apikey":"" #Please add your VirusTotal free API key.
        }
 
    response=requests.get(url,headers=header,params=query_p)
    a=response.text
 
    final=json.loads(a)
-   print("[*]A total of %s vendors have made detections." % final["data"]["detection_ratio"]["detections"])
+   if final["data"]["detection_ratio"]["detections"]==0:
+      print("[*]No Detections")
+      exit()
+   else:
+      print("[*]A total of %s vendors have made detections." % final["data"]["detection_ratio"]["detections"])
    
    token_url=final["data"]["url"]
    #print("\n")
@@ -65,6 +70,8 @@ def detect(hash):
     # Print extracted values
    for key, value in extracted_data.items():
        print(f"[*]{key}: {value}")
+   print("\n")
+   time.sleep(4.5)
       
 
 if __name__== "__main__":
@@ -92,6 +99,12 @@ VirusTotal Detection Viewer by dagowda
    print(banner)
 
    if len(sys.argv)!=2:
-      print("Usage: python3 DSDetect.py <hash>")
+      print("Usage: python3 DSDetect.py <hash file>")
    else:
-      detect(sys.argv[1])
+       try:
+          with open(sys.argv[1], "r") as f:
+              content1=f.read().split()
+       except Exception as e:
+          print(f"error opening file: {e}")
+       for hash in content1:
+          detect(hash)
