@@ -3,7 +3,7 @@ import sys,json,re
 import time
 
 def detect(hash):
-   print(f"Hash: {hash}")
+   print(f"Hash/IP/URL: {hash}")
    url=f"https://www.virustotal.com/api/v3/widget/url"
 
    #print(url)
