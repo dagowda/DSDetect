@@ -14,7 +14,7 @@ def detect(hash):
 
    header={
        "accept": "application/json",
-       "x-apikey":"" #Please add your VirusTotal free API key.
+       "x-apikey":"" #please add your own free VirusTotal API key from https://www.virustotal.com/gui/my-apikey 
        }
 
    response=requests.get(url,headers=header,params=query_p)
@@ -65,7 +65,7 @@ def detect(hash):
        if match:
            extracted_data[key] = match.group(1)
        else:
-            print(f"[!] Could not find {key} in the HTML content.")
+            print(f"[!] Could not find {key}")
 
     # Print extracted values
    for key, value in extracted_data.items():
